@@ -1,0 +1,8 @@
+
+    #header-bg {
+        background: url('../../images/Index.v.1.0/index_640.jpg') ;
+        padding: 25px;
+        background-size: cover;
+        background-repeat: repeat-x;
+        background-size: 100%;
+      }
