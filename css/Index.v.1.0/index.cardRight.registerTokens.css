@@ -1,0 +1,11 @@
+#btnRegisterToken {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+}
+#btnRegisterToken:hover {
+    background-color: RoyalBlue;
+}
