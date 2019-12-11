@@ -7,22 +7,22 @@ function checkTokenLogin() {
     var isLogin = true;
     var username = $.cookie('username');
     if (username === undefined)
-        islogin = false;
+        isLogin = false;
     if (isLogin == true) {
         var gtoken = $.cookie('gtoken');
         if (gtoken === undefined)
-            islogin = false;
-        if (islogin) {
-            $.get("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token="+gtoken,
-            { },
-            function (data, status) {
-                if (data && data.expires_in) {
-                    $("#lblLogin").text('Xin chào, ' + username + '['+data.expires_in+']');
-                }
-                else {
-                    islogin=false;
-                }
-            });
+            isLogin = false;
+        if (isLogin) {
+            $.get("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" + gtoken,
+                {},
+                function (data, status) {
+                    if (data && data.expires_in) {
+                        $("#lblLogin").text('Xin chào, ' + username + '[' + data.expires_in + ']');
+                    }
+                    else {
+                        isLogin = false;
+                    }
+                });
         }
     }
     setLogin(isLogin);
