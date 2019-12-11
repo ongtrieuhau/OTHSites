@@ -1,6 +1,7 @@
 function checkLogin() {
     document.getElementById("lblLogin").style = "display:none";
     document.getElementById("btnSignOut").style = "display:none";
+    checkTokenLogin();
 }
 function checkTokenLogin() {
     var dataCookie = document.cookie;
