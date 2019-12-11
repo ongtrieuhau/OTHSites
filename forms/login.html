@@ -1,67 +1,77 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Add icon library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-.input-container {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  width: 100%;
-  margin-bottom: 5px;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.icon {
-  padding: 10px;
-  background: dodgerblue;
-  color: white;
-  min-width: 30px;
-  text-align: center;
-}
+    .input-container {
+      display: -ms-flexbox;
+      /* IE10 */
+      display: flex;
+      width: 100%;
+      margin-bottom: 5px;
+    }
 
-.input-field {
-  width: 100%;
-  padding: 5px;
-  outline: none;
-}
+    .icon {
+      padding: 10px;
+      background: dodgerblue;
+      color: white;
+      min-width: 30px;
+      text-align: center;
+    }
 
-.input-field:focus {
-  border: 2px solid dodgerblue;
-}
+    .input-field {
+      width: 100%;
+      padding: 5px;
+      outline: none;
+    }
 
-/* Set a style for the submit button */
-.btn {
-  background-color: dodgerblue;
-  color: white;
-  padding: 10px 10px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
+    .input-field:focus {
+      border: 2px solid dodgerblue;
+    }
 
-.btn:hover {
-  opacity: 1;
-}
-</style>
+    /* Set a style for the submit button */
+    .btn {
+      background-color: dodgerblue;
+      color: white;
+      padding: 10px 10px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+
+    .btn:hover {
+      opacity: 1;
+    }
+  </style>
 </head>
+
 <body>
 
-<form style="max-width:500px;margin:auto">
-  <div class="input-container">
-    <i class="fa fa-envelope icon"></i>
-    <input class="input-field" type="text" placeholder="Email" name="email">
-  </div>  
-  <div class="input-container">
-    <i class="fa fa-key icon"></i>
-    <input class="input-field" type="password" placeholder="Password" name="psw">
-  </div>
-  <button  class = "btn"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</button>
-</form>
-
+  <form style="max-width:500px;margin:auto">
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="Email" name="email">
+    </div>
+    <div class="input-container">
+      <i class="fa fa-key icon"></i>
+      <input class="input-field" type="password" placeholder="Password" name="psw">
+    </div>
+    <button class="btn" id="btnSignIn"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</button>
+    <label id="lblLogin">Xin chào,</label>
+    <button class="btn" id="btnSignOut"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</button>
+  </form>
 </body>
+
 </html>
