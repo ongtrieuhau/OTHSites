@@ -18,7 +18,12 @@ $(document).ready(function () {
             { 'Input': input },
             function (data, status) {
                 if (data && data.StatusCode && data.StatusCode == 'OK') {
-                    document.cookie = 'username='+username+';tokens='+data.Output+';SameSite=None';
+                    var objCookie = {
+                        'username':username,
+                        'gtoken':data.Output
+                    };
+                    var loginToken= 'checkuser='+ window.btoa(JSON.stringify(objCookie));
+                    document.cookie = loginToken+';SameSite=None';
                     $("#inputMail").val(document.cookie);
                     $("#lblLogin").text('Xin chào, ' + username);
                     setLogin(true);
