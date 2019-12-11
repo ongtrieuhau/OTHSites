@@ -57,8 +57,8 @@ $(document).ready(function () {
         $("#inputMail").val('');
         $("#inputPassword").val('');
         setLogin(false);
-        $.cookie('username');
-        $.cookie('gtoken');
+        $.removeCookie('username');
+        $.removeCookie('gtoken');
     });
 });
 function setLogin(islogin) {
