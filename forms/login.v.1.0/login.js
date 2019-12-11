@@ -1,13 +1,6 @@
 function checkLogin() {
     document.getElementById("lblLogin").style = "display:none";
     document.getElementById("btnSignOut").style = "display:none";
-    
-    var date = new Date();
-    date.setTime(date.getTime()+3600);
-    document.cookie = "cookiesoth" + "=" + "cookiesoth" + "; expires=" + date.toGMTString();
-    console.log(document.cookie);
-    //alert("Page is loaded");
-    //document.getElementById("btnSignOut").style = "display:show";
 }
 $(document).ready(function () {
     $("#btnSignIn").click(function () {
@@ -18,7 +11,7 @@ $(document).ready(function () {
             { 'Input': input },
             function (data, status) {
                 if (data && data.StatusCode && data.StatusCode == 'OK') {
-                    document.cookie = 'tokens=thuhang;SameSite=None';
+                    document.cookie = 'tokens='+data.Output+';SameSite=None';
                     $("#inputMail").val(document.cookie);
                     $("#lblLogin").text('Xin chào, ' + window.atob(user));
                     setLogin(true);
