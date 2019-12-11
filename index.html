@@ -2,24 +2,27 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="css\Index.v.1.0\index.css">   
-    <link rel="stylesheet" href="css\Index.v.1.0\index.header-bg.css"> 
-    <link rel="stylesheet" href="css\Index.v.1.0\index.cardRight.registerTokens.css"> 
-    <link rel="stylesheet" href="css\Index.v.1.0\index.cardRight.login.css"> 
-    <link rel='shortcut icon' type='image/x-icon' href='images\icon_16.ico' />     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="import" href="/path/to/imports/stuff.html">
+  <link rel="stylesheet" href="css\Index.v.1.0\index.css">
+  <link rel="stylesheet" href="css\Index.v.1.0\index.header-bg.css">
+  <link rel="stylesheet" href="css\Index.v.1.0\index.cardRight.registerTokens.css">
+  <link rel="stylesheet" href="css\Index.v.1.0\index.cardRight.login.css">
+  <link rel='shortcut icon' type='image/x-icon' href='images\icon_16.ico' />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="import" href="/path/to/imports/stuff.html">
 
-    
-    <script src="jquery.min.js"></script>     
+
+  <script src="jquery.min.js"></script>
 </head>
 <title>Quản lý OTH</title>
+
 <body>
 
-  <div class="header" id = "header-bg" >
+  <div class="header" id="header-bg">
     <h1>OTH Sites - Xin chào bạn</h1>
   </div>
-  <div class="blankrow" id = "blankrow"><h6></h6></div>
+  <div class="blankrow" id="blankrow">
+    <h6></h6>
+  </div>
   <div class="topnav">
     <a href="#">Home</a>
     <a href="#">Google Scripts</a>
@@ -52,15 +55,34 @@
     <div class="rightcolumn">
       <!-- Card login. -->
       <div class="cardlogin">
-          <iframe id="myFrame" src="forms\login.v.1.0\login.html" style="height:140px;width:100%" frameBorder="0"></iframe>
+        <iframe id="myFrame" src="forms\login.v.1.0\login.html" style="height:140px;width:100%"
+          frameBorder="0"></iframe>
       </div>
       <div class="card">
         <h2>Google Services</h2>
-        <button class="btnRegisterToken" id = "btnRegisterToken"  onclick=" window.open('https://script.google.com/macros/s/AKfycbzKjgH_MEhug8rnDFSD8jU6b96XVYA6F7FEXi4KTR05ad-w5hBR/exec','_blank');"  style="width:100%">
+        <button class="btnRegisterToken" id="btnRegisterToken"
+          onclick=" window.open('https://script.google.com/macros/s/AKfycbzKjgH_MEhug8rnDFSD8jU6b96XVYA6F7FEXi4KTR05ad-w5hBR/exec','_blank');"
+          style="width:100%">
           <i class="fa fa-google" aria-hidden="true"></i> Đăng ký thêm Tokens</button>
-        <div><h6></h6></div>  
-        <button class="btnRegisterToken" id = "btnRegisterToken"  onclick=" window.open('https://groups.google.com/forum/#!managemembers/appcriptmembers/members/active','_blank');"  style="width:100%">
+        <div>
+          <h6></h6>
+        </div>
+        <button class="btnRegisterToken" id="btnRegisterToken"
+          onclick=" window.open('https://groups.google.com/forum/#!managemembers/appcriptmembers/members/active','_blank');"
+          style="width:100%">
           <i class="fa fa-users" aria-hidden="true"></i> Groups Scripts</button>
+        <div>
+          <h6></h6>
+        </div>
+        <button class="btnRegisterToken" id="btnRegisterToken"
+          onclick=" window.open('https://script.google.com','_blank');" style="width:100%">
+          <i class="fa fa-users" aria-hidden="true"></i> Google App Scripts</button>
+          <div>
+            <h6></h6>
+          </div>
+          <button class="btnRegisterToken" id="btnRegisterToken"
+            onclick=" window.open('https://drive.google.com','_blank');" style="width:100%">
+            <i class="fa fa-users" aria-hidden="true"></i> Google Drive</button>
       </div>
       <div class="card">
         <h3>Popular Post</h3>
