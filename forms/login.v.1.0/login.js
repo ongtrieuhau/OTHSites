@@ -1,11 +1,11 @@
 function checkLogin() {
     document.getElementById("lblLogin").style = "display:none";
     document.getElementById("btnSignOut").style = "display:none";
+    $.cookie('namejquery-cookie', 'valuejquery-cookie', { expires: 7 });
 }
 function checkTokenLogin(){
     var dataCookie = document.cookie;
-    var isLogin=true;
-    
+    var isLogin=true;    
     setLogin(isLogin);
 }
 $(document).ready(function () {
@@ -45,13 +45,7 @@ $(document).ready(function () {
         setLogin(false);
     });
 });
-function setLogin(islogin) {
-    
-    var date = new Date();
-    date.setTime(date.getTime()+3600);
-    document.cookie = "cookiesoth" + "=" + "cookiesoth" + "; expires=" + date.toGMTString();
-    console.log(document.cookie);
-    
+function setLogin(islogin) {    
     var showElement = "display:show";
     var hideElement = "display:none";
     var inputs = ["inputMail777", "inputPassword", "icon-mail", "icon-pass", "btnSignIn"];
