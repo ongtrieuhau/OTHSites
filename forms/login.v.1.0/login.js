@@ -62,7 +62,7 @@ $(document).ready(function () {
 function setLogin(islogin) {
     var showElement = "display:show";
     var hideElement = "display:none";
-    var inputs = ["inputMail777", "inputPassword", "icon-mail", "icon-pass", "btnSignIn"];
+    var inputs = ["inputMail", "inputPassword", "icon-mail", "icon-pass", "btnSignIn"];
     var outputs = ["lblLogin", "btnSignOut"];
     for (var i = 0, ilen = inputs.length; i < ilen; i++) {
         var el = document.getElementById(inputs[i]);
