@@ -2,6 +2,12 @@ function checkLogin() {
     document.getElementById("lblLogin").style = "display:none";
     document.getElementById("btnSignOut").style = "display:none";
 }
+function checkTokenLogin(){
+    var dataCookie = document.cookie;
+    var isLogin=true;
+    
+    setLogin(isLogin);
+}
 $(document).ready(function () {
     $("#btnSignIn").click(function () {
         var username = document.getElementById("inputMail").value;
@@ -14,7 +20,7 @@ $(document).ready(function () {
                 if (data && data.StatusCode && data.StatusCode == 'OK') {
                     document.cookie = 'username='+username+';tokens='+data.Output+';SameSite=None';
                     $("#inputMail").val(document.cookie);
-                    $("#lblLogin").text('Xin chào, ' + window.atob(username));
+                    $("#lblLogin").text('Xin chào, ' + username);
                     setLogin(true);
                 }
                 else if (data && data.Error && data.Error != '') {
