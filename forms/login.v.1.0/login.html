@@ -13,17 +13,19 @@
 
 <body onload="checkLogin()">
   <!--<form style="max-width:500px;margin:auto" action="">-->
-    <div class="input-container">
-      <i class="fa fa-envelope icon"></i>
-      <input class="input-field" type="text" placeholder="Email" name="email" id = "inputMail">
-    </div>
-    <div class="input-container">
-      <i class="fa fa-key icon"></i>
-      <input class="input-field" type="password" placeholder="Password" name="psw" id="inputPassword">
-    </div>
-    <button class="btn" id="btnSignIn"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</button>
+  <div class="input-container">
+    <i class="fa fa-envelope icon" id="icon-mail"></i>
+    <input class="input-field" type="text" placeholder="Email" name="email" id="inputMail">
+  </div>
+  <div class="input-container">
+    <i class="fa fa-key icon" id="icon-pass"></i>
+    <input class="input-field" type="password" placeholder="Password" name="psw" id="inputPassword">
+  </div>
+  <button class="btn" id="btnSignIn"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</button>
+  <div class="output-container">
     <label id="lblLogin">Xin chào,</label>
     <button class="btn" id="btnSignOut"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</button>
+  </div>
   <!--</form>-->
 </body>
 
