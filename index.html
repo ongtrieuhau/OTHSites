@@ -5,8 +5,13 @@
     <link rel="stylesheet" href="css\Index.v.1.0\index.css">   
     <link rel="stylesheet" href="css\Index.v.1.0\index.header-bg.css"> 
     <link rel="stylesheet" href="css\Index.v.1.0\index.cardRight.registerTokens.css"> 
+    <link rel="stylesheet" href="css\Index.v.1.0\index.cardRight.login.css"> 
     <link rel='shortcut icon' type='image/x-icon' href='images\icon_16.ico' />     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="import" href="/path/to/imports/stuff.html">
+
+    
+    <script src="jquery.min.js"></script>     
 </head>
 <title>Quản lý OTH</title>
 <body>
@@ -45,6 +50,10 @@
       </div>
     </div>
     <div class="rightcolumn">
+      <!-- Card login. -->
+      <div class="cardlogin">
+          <iframe id="myFrame" src="forms\login.html" style="height:130px;width:100%" frameBorder="0"></iframe>
+      </div>
       <div class="card">
         <h2>Google Services</h2>
         <button class="btnRegisterToken" id = "btnRegisterToken"  onclick=" window.open('https://script.google.com/macros/s/AKfycbzKjgH_MEhug8rnDFSD8jU6b96XVYA6F7FEXi4KTR05ad-w5hBR/exec','_blank');"  style="width:100%">
@@ -75,7 +84,6 @@
   <div class="footer">
     <h2>Footer</h2>
   </div>
-
 </body>
 
 </html>
