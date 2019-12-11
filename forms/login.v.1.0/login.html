@@ -2,28 +2,29 @@
 <html>
 
 <head>
+  <script src="..\..\js\jquery.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Add icon library -->
   <link rel="stylesheet" href="login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-  <script src="login.js"></script> 
+
+  <script src="login.js"></script>
 </head>
 
 <body onload="checkLogin()">
-  <form style="max-width:500px;margin:auto">
+  <!--<form style="max-width:500px;margin:auto" action="">-->
     <div class="input-container">
       <i class="fa fa-envelope icon"></i>
-      <input class="input-field" type="text" placeholder="Email" name="email">
+      <input class="input-field" type="text" placeholder="Email" name="email" id = "inputMail">
     </div>
     <div class="input-container">
       <i class="fa fa-key icon"></i>
-      <input class="input-field" type="password" placeholder="Password" name="psw">
+      <input class="input-field" type="password" placeholder="Password" name="psw" id="inputPassword">
     </div>
     <button class="btn" id="btnSignIn"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</button>
     <label id="lblLogin">Xin chào,</label>
     <button class="btn" id="btnSignOut"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</button>
-  </form>
+  <!--</form>-->
 </body>
 
 </html>
