@@ -4,16 +4,17 @@ function checkLogin() {
 }
 $(document).ready(function () {
     $("#btnSignIn").click(function () {
-        var user = window.btoa(document.getElementById("inputMail").value);
+        var username = document.getElementById("inputMail").value;
+        var user = window.btoa(username);
         var pass = window.btoa(document.getElementById("inputPassword").value);
         var input = window.btoa(user + ':' + pass);
         $.get("https://script.google.com/macros/s/AKfycbwEc5wRLVL3nf8FKE46drhQssdMuCPpQlqyerQX/exec",
             { 'Input': input },
             function (data, status) {
                 if (data && data.StatusCode && data.StatusCode == 'OK') {
-                    document.cookie = 'tokens='+data.Output+';SameSite=None';
+                    document.cookie = 'username='+username+';tokens='+data.Output+';SameSite=None';
                     $("#inputMail").val(document.cookie);
-                    $("#lblLogin").text('Xin chào, ' + window.atob(user));
+                    $("#lblLogin").text('Xin chào, ' + window.atob(username));
                     setLogin(true);
                 }
                 else if (data && data.Error && data.Error != '') {
