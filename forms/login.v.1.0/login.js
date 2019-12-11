@@ -1,11 +1,30 @@
 function checkLogin() {
     document.getElementById("lblLogin").style = "display:none";
     document.getElementById("btnSignOut").style = "display:none";
-    $.cookie('namejquery-cookie', 'valuejquery-cookie', { expires: 7 });
 }
-function checkTokenLogin(){
+function checkTokenLogin() {
     var dataCookie = document.cookie;
-    var isLogin=true;    
+    var isLogin = true;
+    var username = $.cookie('username');
+    if (username === undefined)
+        islogin = false;
+    if (isLogin == true) {
+        var gtoken = $.cookie('gtoken');
+        if (gtoken === undefined)
+            islogin = false;
+        if (islogin) {
+            $.get("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token="+gtoken,
+            { },
+            function (data, status) {
+                if (data && data.expires_in) {
+                    $("#lblLogin").text('Xin chào, ' + username + '['+data.expires_in+']');
+                }
+                else {
+                    islogin=false;
+                }
+            });
+        }
+    }
     setLogin(isLogin);
 }
 $(document).ready(function () {
@@ -18,15 +37,9 @@ $(document).ready(function () {
             { 'Input': input },
             function (data, status) {
                 if (data && data.StatusCode && data.StatusCode == 'OK') {
-                    var objCookie = {
-                        'username':username,
-                        'gtoken':data.Output
-                    };
-                    var loginToken= 'checkuser='+ window.btoa(JSON.stringify(objCookie));
-                    document.cookie = loginToken+';SameSite=None';
-                    $("#inputMail").val(document.cookie);
-                    $("#lblLogin").text('Xin chào, ' + username);
-                    setLogin(true);
+                    $.cookie('username', username, { expires: 1 });
+                    $.cookie('gtoken', data.Output, { expires: 1 });
+                    checkTokenLogin();
                 }
                 else if (data && data.Error && data.Error != '') {
                     alert(data.Error);
@@ -45,7 +58,7 @@ $(document).ready(function () {
         setLogin(false);
     });
 });
-function setLogin(islogin) {    
+function setLogin(islogin) {
     var showElement = "display:show";
     var hideElement = "display:none";
     var inputs = ["inputMail777", "inputPassword", "icon-mail", "icon-pass", "btnSignIn"];
