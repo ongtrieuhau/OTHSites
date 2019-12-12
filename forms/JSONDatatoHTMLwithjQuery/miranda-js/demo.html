@@ -22,9 +22,9 @@
             </thead>
             <tbody id="mydata">
                 <tr>
-                    <td><a href="#">[[firstname]]</a></td>
-                    <td>[[lastname]]</td>
-                    <td>[[gender]]</td>
+                    <td class="firstname"><a href="#">[[firstname]]</a></td>
+                    <td class="lastname">[[lastname]]</td>
+                    <td class="gender">[[gender]]</td>
                     <td><button class="button" style="vertical-align:middle"><span>Xem chi tiết </span></button></td>
                 </tr>
             </tbody>
@@ -45,7 +45,22 @@
             { "firstname": "Tên 4", "lastname": "Họ 4", "gender": "Nam" },
             { "firstname": "Tên 5", "lastname": "Họ 5", "gender": "Nam" }
         ];
-        $("#mydata").mirandajs(listdata);
+        $("#mydata").mirandajs(listdata);        
+    </script>
+    <script>
+        $(".button").click(function () {
+            var $row = $(this).closest("tr"),
+                // $tds = $row.find("td:nth-child(2)");
+                $tds = $row.find("td");
+            var rowValues = {};
+            $.each($tds, function () {
+                var className = $(this).attr("class");
+                if(className && className!=''){
+                    rowValues[className] =$(this).text();
+                }
+            });
+            alert(JSON.stringify(rowValues));
+        });
     </script>
 </body>
 
