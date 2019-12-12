@@ -22,11 +22,17 @@ function checkTokenLogin() {
                     }
                     else {
                         isLogin = false;
+                        $("#lblLogin").text('');
+                        resetCookieLogin();
                     }
                 });
         }
     }
     setLogin(isLogin);
+}
+function resetCookieLogin(){
+    $.removeCookie('username');
+    $.removeCookie('gtoken');
 }
 $(document).ready(function () {
     $("#btnSignIn").click(function () {
@@ -57,8 +63,7 @@ $(document).ready(function () {
         $("#inputMail").val('');
         $("#inputPassword").val('');
         setLogin(false);
-        $.removeCookie('username');
-        $.removeCookie('gtoken');
+        resetCookieLogin();
     });
 });
 function setLogin(islogin) {
