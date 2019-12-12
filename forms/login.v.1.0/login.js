@@ -31,8 +31,11 @@ function checkTokenLogin() {
     setLogin(isLogin);
 }
 function resetCookieLogin() {
-    $.removeCookie('username');
-    $.removeCookie('gtoken');
+    $.delCookie('username');
+    $.delCookie('gtoken');
+}
+function delCookie(key){
+    $.removeCookie(key+'_'+window.btoa(key));
 }
 function saveCookie(key, value) {
     $.cookie(key+'_'+window.btoa(key), window.btoa(value), { expires: 1 });
