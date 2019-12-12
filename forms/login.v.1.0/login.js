@@ -31,8 +31,8 @@ function checkTokenLogin() {
     setLogin(isLogin);
 }
 function resetCookieLogin() {
-    $.delCookieKey('username');
-    $.delCookieKey('gtoken');
+    delCookieKey('username');
+    delCookieKey('gtoken');
 }
 function delCookieKey(key){
     $.removeCookie(key+'_'+window.btoa(key));
