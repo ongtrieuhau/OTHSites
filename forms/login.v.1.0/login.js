@@ -35,11 +35,11 @@ function resetCookieLogin() {
     $.removeCookie('gtoken');
 }
 function saveCookie(key, value) {
-    $.cookie(window.btoa(key), window.btoa(value), { expires: 1 });
+    $.cookie(key+'_'+window.btoa(key), window.btoa(value), { expires: 1 });
 }
 function getCookie(key) {
     var result;
-    var value = $.cookie(window.btoa(key));
+    var value = $.cookie(key+'_'+window.btoa(key));
     if (value)
         result = window.atob(value);
     return result;
