@@ -6,11 +6,11 @@ function checkLogin() {
 function checkTokenLogin() {
     var dataCookie = document.cookie;
     var isLogin = true;
-    var username = $.cookie('username');
+    var username = getCookie('username');
     if (username === undefined)
         isLogin = false;
     if (isLogin == true) {
-        var gtoken = $.cookie('gtoken');
+        var gtoken = getCookie('gtoken');
         if (gtoken === undefined)
             isLogin = false;
         if (isLogin) {
@@ -30,9 +30,19 @@ function checkTokenLogin() {
     }
     setLogin(isLogin);
 }
-function resetCookieLogin(){
+function resetCookieLogin() {
     $.removeCookie('username');
     $.removeCookie('gtoken');
+}
+function saveCookie(key, value) {
+    $.cookie(window.btoa(key), window.btoa(value), { expires: 1 });
+}
+function getCookie(key) {
+    var result;
+    var value = $.cookie(window.btoa(key));
+    if (value)
+        result = window.atob(value);
+    return result;
 }
 $(document).ready(function () {
     $("#btnSignIn").click(function () {
@@ -44,8 +54,8 @@ $(document).ready(function () {
             { 'Input': input },
             function (data, status) {
                 if (data && data.StatusCode && data.StatusCode == 'OK') {
-                    $.cookie('username', username, { expires: 1 });
-                    $.cookie('gtoken', data.Output, { expires: 1 });
+                    saveCookie('username', username);
+                    saveCookie('gtoken', data.Output);
                     checkTokenLogin();
                 }
                 else if (data && data.Error && data.Error != '') {
