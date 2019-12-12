@@ -4,7 +4,8 @@
     color: white;
     padding: 12px 30px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 20px;    
+    text-align: left;
 }
 #btnRegisterToken:hover {
     background-color: RoyalBlue;
