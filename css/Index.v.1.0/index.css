@@ -50,6 +50,7 @@
     .leftcolumn {
       float: left;
       width: 75%;
+      height: 100%;
     }
 
     /* Right column */
