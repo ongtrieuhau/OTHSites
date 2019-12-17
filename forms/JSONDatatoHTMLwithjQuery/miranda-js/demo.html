@@ -4,33 +4,48 @@
 <head>
     <meta charset="utf-8" />
     <title>JSON Data to HTML</title>
-    <link rel="stylesheet" href="w3.css">
-    <link rel="stylesheet" href="w3.button.css">
+    <!-- <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="w3.button.css"> -->
     <link rel='shortcut icon' type='image/x-icon' href='..\..\..\images\icon_16.ico' />
+
+    <script src="js\jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="demo.css">
 </head>
 
 <body>
-    <div class="w3-container">
-        <!-- <p><br /></p> -->
-        <table class="w3-table w3-bordered w3-striped">
-            <thead>
-                <tr class="w3-green">
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Gender</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="mydata">
-                <tr>
-                    <td class="firstname"><a href="#">[[firstname]]</a></td>
-                    <td class="lastname">[[lastname]]</td>
-                    <td class="gender">[[gender]]</td>
-                    <td><button class="button" style="vertical-align:middle"><span>Xem chi tiết </span></button></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <section class="content-area">
+        <div class="table-area">
+            <table class="responsive-table table">
+                <thead>
+                    <tr class="w3-green">
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Gender</th>
+                    </tr>
+                </thead>
+                <tbody  id="mydata">                   
+                    <tr>
+                        <td class="firstname"><a href="#">[[firstname]]</a></td>
+                        <td class="lastname">[[lastname]]</td>
+                        <td class="gender">[[gender]]</td>
+                        <td><button class="button" style="vertical-align:middle"><span>Xem chi tiết </span></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
     <div>
         <p><br /></p>
         <input type="button" value="Go back!" onclick="history.back()">
@@ -39,25 +54,88 @@
     <script src="jquery.miranda.js"></script>
     <script src="jquery.miranda.min.js"></script>
     <script>
-        var listdata = [
-            { "firstname": "Tên 1 Tên 1", "lastname": "Họ 1", "gender": "Nam" },
-            { "firstname": "Tên 2 Tên 2", "lastname": "Họ 2", "gender": "Nữ" },
-            { "firstname": "Tên 3 Tên 3 ", "lastname": "Họ 3", "gender": "Nữ" },
-            { "firstname": "Tên 4 Tên 4", "lastname": "Họ 4", "gender": "Nam" },
-            { "firstname": "Tên 5 Tên 5", "lastname": "Họ 5", "gender": "Nam" },
-            { "firstname": "Tên 1 Tên 1", "lastname": "Họ 1", "gender": "Nam" },
-            { "firstname": "Tên 2 Tên 2", "lastname": "Họ 2", "gender": "Nữ" },
-            { "firstname": "Tên 3 Tên 3 ", "lastname": "Họ 3", "gender": "Nữ" },
-            { "firstname": "Tên 4 Tên 4", "lastname": "Họ 4", "gender": "Nam" },
-            { "firstname": "Tên 5 Tên 5", "lastname": "Họ 5", "gender": "Nam" },
-            { "firstname": "Tên 5 Tên 5", "lastname": "Họ 5", "gender": "Nam" },
-            { "firstname": "Tên 1 Tên 1", "lastname": "Họ 1", "gender": "Nam" },
-            { "firstname": "Tên 2 Tên 2", "lastname": "Họ 2", "gender": "Nữ" },
-            { "firstname": "Tên 3 Tên 3 ", "lastname": "Họ 3", "gender": "Nữ" },
-            { "firstname": "Tên 4 Tên 4", "lastname": "Họ 4", "gender": "Nam" },
-            { "firstname": "Tên 5 Tên 5", "lastname": "Họ 5", "gender": "Nam" }
+        var listdata = [{
+                "firstname": "Tên 1 Tên 1",
+                "lastname": "Họ 1",
+                "gender": "Nam"
+            },
+            {
+                "firstname": "Tên 2 Tên 2",
+                "lastname": "Họ 2",
+                "gender": "Nữ"
+            },
+            {
+                "firstname": "Tên 3 Tên 3 ",
+                "lastname": "Họ 3",
+                "gender": "Nữ"
+            },
+            {
+                "firstname": "Tên 4 Tên 4",
+                "lastname": "Họ 4",
+                "gender": "Nam"
+            },
+            {
+                "firstname": "Tên 5 Tên 5",
+                "lastname": "Họ 5",
+                "gender": "Nam"
+            },
+            {
+                "firstname": "Tên 1 Tên 1",
+                "lastname": "Họ 1",
+                "gender": "Nam"
+            },
+            {
+                "firstname": "Tên 2 Tên 2",
+                "lastname": "Họ 2",
+                "gender": "Nữ"
+            },
+            {
+                "firstname": "Tên 3 Tên 3 ",
+                "lastname": "Họ 3",
+                "gender": "Nữ"
+            },
+            {
+                "firstname": "Tên 4 Tên 4",
+                "lastname": "Họ 4",
+                "gender": "Nam"
+            },
+            {
+                "firstname": "Tên 5 Tên 5",
+                "lastname": "Họ 5",
+                "gender": "Nam"
+            },
+            {
+                "firstname": "Tên 5 Tên 5",
+                "lastname": "Họ 5",
+                "gender": "Nam"
+            },
+            {
+                "firstname": "Tên 1 Tên 1",
+                "lastname": "Họ 1",
+                "gender": "Nam"
+            },
+            {
+                "firstname": "Tên 2 Tên 2",
+                "lastname": "Họ 2",
+                "gender": "Nữ"
+            },
+            {
+                "firstname": "Tên 3 Tên 3 ",
+                "lastname": "Họ 3",
+                "gender": "Nữ"
+            },
+            {
+                "firstname": "Tên 4 Tên 4",
+                "lastname": "Họ 4",
+                "gender": "Nam"
+            },
+            {
+                "firstname": "Tên 5 Tên 5",
+                "lastname": "Họ 5",
+                "gender": "Nam"
+            }
         ];
-        $("#mydata").mirandajs(listdata);        
+        $("#mydata").mirandajs(listdata);
     </script>
     <script>
         $(".button").click(function () {
@@ -67,8 +145,8 @@
             var rowValues = {};
             $.each($tds, function () {
                 var className = $(this).attr("class");
-                if(className && className!=''){
-                    rowValues[className] =$(this).text();
+                if (className && className != '') {
+                    rowValues[className] = $(this).text();
                 }
             });
             alert(JSON.stringify(rowValues));

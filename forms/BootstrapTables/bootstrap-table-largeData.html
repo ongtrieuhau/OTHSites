@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>[JSON Data], Bootstrap Table !</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+
+  <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+  <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+  <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/export/bootstrap-table-export.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+</head>
+
+<body>
+  <div class="toolbar">
+    <button id="load" class="btn btn-secondary">Load 10000 Rows</button>
+    <button id="append" class="btn btn-secondary">Append 10000 Rows</button>
+    Total rows: <span id="total"></span>
+  </div>
+  
+  <table id="table"
+    data-toolbar=".toolbar"
+    data-height="400"
+    data-virtual-scroll="true"
+    data-show-columns="true">
+    <thead>
+      <tr>
+        <th data-field="id" sortable=true >ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+      </tr>
+    </thead>
+  </table>
+  
+  <script>
+    var $table = $('#table')
+    var total = 0
+  
+    function getData(number, isAppend) {
+      if (!isAppend) {
+        total = 0
+      }
+      var data = []
+      for (var i = total; i < total + number; i++) {
+        data.push({
+          'id': i,
+          'name': 'Item ' + i,
+          'price': '$' + i
+        })
+      }
+      if (isAppend) {
+        total += number
+      } else {
+        total = number
+      }
+      $('#total').text(total)
+      return data
+    }
+  
+    $(function() {
+      $table.bootstrapTable({data: getData(30)})
+  
+      $('#load').click(function () {
+        $table.bootstrapTable('load', getData(10000))
+      })
+  
+      $('#append').click(function () {
+        $table.bootstrapTable('append', getData(10000, true))
+      })
+    })
+  </script>
+</body>
+
+</html>
