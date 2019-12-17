@@ -1,5 +1,6 @@
 * {
-    box-sizing: border-box
+    box-sizing: border-box;
+    padding-bottom:30px;  
 }
 
 /* Set height of body and the document to 100% */
