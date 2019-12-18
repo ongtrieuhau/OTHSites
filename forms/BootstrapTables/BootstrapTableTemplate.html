@@ -107,35 +107,87 @@
             $table.bootstrapTable('destroy').bootstrapTable({
                 height: 600,
                 locale: 'vi-VN',
-                formatShowingRows: function (pageFrom, pageTo, totalRows) {
-                    return 'Từ ' + pageFrom + ' đến ' + pageTo + ' / ' + totalRows + ' dòng ';
+                formatLoadingMessage() {
+                    return 'Đang tải'
                 },
-                formatSearch: function () {
-                    return 'Tìm kiếm';
+                formatRecordsPerPage(pageNumber) {
+                    return `${pageNumber} bản ghi mỗi trang`
                 },
-                formatLoadingMessage: function () {
-                    return 'Đang lấy dữ liệu...';
+                formatShowingRows(pageFrom, pageTo, totalRows, totalNotFiltered) {
+                    if (totalNotFiltered !== undefined && totalNotFiltered > 0 && totalNotFiltered >
+                        totalRows) {
+                        return `Hiển thị từ trang ${pageFrom} đến ${pageTo} của ${totalRows} bảng ghi (filtered from ${totalNotFiltered} total rows)`
+                    }
+                    return `Hiển thị từ trang ${pageFrom} đến ${pageTo} của ${totalRows} bảng ghi`
                 },
-                formatRecordsPerPage: function (pageNumber) {
-                    return pageNumber + '';
+                formatSRPaginationPreText() {
+                    return 'Trang trước'
                 },
-                formatNoMatches: function () {
-                    return 'Không có dữ liệu';
+                formatSRPaginationPageText(page) {
+                    return `Đến trang ${page}`
                 },
-                formatPaginationSwitch: function () {
-                    return 'Hiện/Ẩn phân trang';
+                formatSRPaginationNextText() {
+                    return 'Trang kế sau'
                 },
-                formatRefresh: function () {
-                    return 'Lấy dữ liệu';
+                formatDetailPagination(totalRows) {
+                    return `Thể hiện ${totalRows} dòng dữ liệu`
                 },
-                formatToggle: function () {
-                    return 'Chuyển đổi';
+                formatClearSearch() {
+                    return 'Bỏ tìm kiếm'
                 },
-                formatColumns: function () {
-                    return 'Hiện/Ẩn trường dữ liệu';
+                formatSearch() {
+                    return 'Tìm kiếm'
                 },
-                formatAllRows: function () {
-                    return 'Tất cả';
+                formatNoMatches() {
+                    return 'Không có dữ liệu'
+                },
+                formatPaginationSwitch() {
+                    return 'Ẩn/Hiện phân trang'
+                },
+                formatPaginationSwitchDown() {
+                    return 'Thể hiện phân trang'
+                },
+                formatPaginationSwitchUp() {
+                    return 'Ẩn phân trang'
+                },
+                formatRefresh() {
+                    return 'Lấy dữ liệu'
+                },
+                formatToggle() {
+                    return 'Toggle'
+                },
+                formatToggleOn() {
+                    return 'Xem dạng card'
+                },
+                formatToggleOff() {
+                    return 'Bỏ xem dạng card'
+                },
+                formatColumns() {
+                    return 'Thể hiện trường dữ liệu'
+                },
+                formatColumnsToggleAll() {
+                    return 'Toggle all'
+                },
+                formatFullscreen() {
+                    return 'Xem đầy đủ'
+                },
+                formatAllRows() {
+                    return 'Tất cả'
+                },
+                formatAutoRefresh() {
+                    return 'Tự động làm tươi dữ liệu'
+                },
+                formatExport() {
+                    return 'Kết xuất dữ liệu'
+                },
+                formatJumpTo() {
+                    return 'Đi đến'
+                },
+                formatAdvancedSearch() {
+                    return 'Tìm kiếm nâng cao'
+                },
+                formatAdvancedCloseButton() {
+                    return 'Đóng'
                 },
                 columns: [
                     [{
