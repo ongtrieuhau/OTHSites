@@ -22,7 +22,6 @@
     </script>
     <script src="BootstrapTableTemplate.js"></script>
 
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
@@ -108,6 +107,36 @@
             $table.bootstrapTable('destroy').bootstrapTable({
                 height: 600,
                 locale: 'vi-VN',
+                formatShowingRows: function (pageFrom, pageTo, totalRows) {
+                    return 'Từ ' + pageFrom + ' đến ' + pageTo + ' / ' + totalRows + ' dòng ';
+                },
+                formatSearch: function () {
+                    return 'Tìm kiếm';
+                },
+                formatLoadingMessage: function () {
+                    return 'Đang lấy dữ liệu...';
+                },
+                formatRecordsPerPage: function (pageNumber) {
+                    return pageNumber + '';
+                },
+                formatNoMatches: function () {
+                    return 'Không có dữ liệu';
+                },
+                formatPaginationSwitch: function () {
+                    return 'Hiện/Ẩn phân trang';
+                },
+                formatRefresh: function () {
+                    return 'Lấy dữ liệu';
+                },
+                formatToggle: function () {
+                    return 'Chuyển đổi';
+                },
+                formatColumns: function () {
+                    return 'Hiện/Ẩn trường dữ liệu';
+                },
+                formatAllRows: function () {
+                    return 'Tất cả';
+                },
                 columns: [
                     [{
                         field: 'state',
