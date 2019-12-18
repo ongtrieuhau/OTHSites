@@ -1,149 +1,51 @@
-var $table = $('#table')
-var $remove = $('#remove')
-var selections = []
+/**
+ * @author Michael Sogos <michael.sogos@gurustudioweb.it>
+ * @version v1.0.0
+ * @link https://github.com/michaelsogos/bootstrap-table-toolbar-buttons
+ */
 
-function getIdSelections() {
-    return $.map($table.bootstrapTable('getSelections'), function (row) {
-        return row.id
-    })
-}
+(function ($) {
+	'use strict';
+	var sprintf = $.fn.bootstrapTable.utils.sprintf;
 
-function responseHandler(res) {
-    $.each(res.rows, function (i, row) {
-        row.state = $.inArray(row.id, selections) !== -1
-    })
-    return res
-}
+	$.extend($.fn.bootstrapTable.defaults, {
+		customToolbarButtons: []
+	});
 
-function detailFormatter(index, row) {
-    var html = []
-    $.each(row, function (key, value) {
-        html.push('<p><b>' + key + ':</b> ' + value + '</p>')
-    })
-    return html.join('')
-}
+	$.extend($.fn.bootstrapTable.defaults);
 
-function operateFormatter(value, row, index) {
-    return [
-        '<a class="like" href="javascript:void(0)" title="Like">',
-        '<i class="fa fa-heart"></i>',
-        '</a>  ',
-        '<a class="remove" href="javascript:void(0)" title="Remove">',
-        '<i class="fa fa-trash"></i>',
-        '</a>'
-    ].join('')
-}
+	var BootstrapTable = $.fn.bootstrapTable.Constructor,
+		_initToolbar = BootstrapTable.prototype.initToolbar;
 
-window.operateEvents = {
-    'click .like': function (e, value, row, index) {
-        alert('You click like action, row: ' + JSON.stringify(row))
-    },
-    'click .remove': function (e, value, row, index) {
-        $table.bootstrapTable('remove', {
-            field: 'id',
-            values: [row.id]
-        })
-    }
-}
+	BootstrapTable.prototype.initToolbar = function () {
+		var self = this;
+		_initToolbar.apply(this, Array.prototype.slice.apply(arguments));
 
-function totalTextFormatter(data) {
-    return 'Total'
-}
+		if (this.options.customToolbarButtons.length > 0) {
+			this.showToolbar = true;
 
-function totalNameFormatter(data) {
-    return data.length
-}
+			$.each(this.options.customToolbarButtons, function (index, item) {
+				var btnGroup = self.$toolbar.find('>.btn-group');
+				var button = btnGroup.find('button[name=' + item.name + ']');
+				if (!button.length) {
 
-function totalPriceFormatter(data) {
-    var field = this.field
-    return '$' + data.map(function (row) {
-        return +row[field].substring(1)
-    }).reduce(function (sum, i) {
-        return sum + i
-    }, 0)
-}
+					var htmlButton = '<button ' +
+						sprintf('name="%s" ', item.name) +
+						sprintf('title="%s" ', item.title) +
+						sprintf('aria-label="%s" ', item.title) +
+						'class="btn ' +
+						sprintf('btn-%s ', self.options.buttonsClass) +
+						sprintf('btn-%s ', self.options.iconSize) +
+						'" type="button"><i class="' +
+						sprintf('%s ', self.options.iconsPrefix) +
+						sprintf('%s ', item.icon) +
+						'"></i></button>';
 
-function initTable() {
-    $table.bootstrapTable('destroy').bootstrapTable({
-        height: 700,
-        locale: 'vi-VN',
-        columns: [
-            [{
-                field: 'state',
-                checkbox: true,
-                rowspan: 2,
-                align: 'center',
-                valign: 'middle'
-            }, {
-                title: 'Item ID',
-                field: 'id',
-                rowspan: 2,
-                align: 'center',
-                valign: 'middle',
-                sortable: true,
-                footerFormatter: totalTextFormatter
-            }, {
-                title: 'Item Detail',
-                colspan: 3,
-                align: 'center'
-            }],
-            [{
-                field: 'name',
-                title: 'Item Name',
-                sortable: true,
-                footerFormatter: totalNameFormatter,
-                align: 'center'
-            }, {
-                field: 'price',
-                title: 'Item Price',
-                sortable: true,
-                align: 'center',
-                footerFormatter: totalPriceFormatter
-            }, {
-                field: 'operate',
-                title: 'Item Operate',
-                align: 'center',
-                clickToSelect: false,
-                events: window.operateEvents,
-                formatter: operateFormatter
-            }]
-        ]
-    })
-    $table.on('check.bs.table uncheck.bs.table ' +
-        'check-all.bs.table uncheck-all.bs.table',
-        function () {
-            $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
+					button = $(htmlButton).appendTo(btnGroup);
 
-            // save your data, here just save the current page
-            selections = getIdSelections()
-            // push or splice the selections if you want to save all data selections
-        })
-    $table.on('all.bs.table', function (e, name, args) {
-        console.log(name, args)
-    })
-    $table.on('refresh.bs.table', function (e, name, args) {
-        $table.bootstrapTable('load', randomData())
-    })
-    $remove.click(function () {
-        var ids = getIdSelections()
-        $table.bootstrapTable('remove', {
-            field: 'id',
-            values: ids
-        })
-        $remove.prop('disabled', true)
-    })
-}
-
-function randomData() {
-    var startId = ~~(Math.random() * 100)
-    var rows = []
-
-    for (var i = 0; i < 1000; i++) {
-        rows.push({
-            id: startId + i,
-            name: 'test' + (startId + i),
-            price: '$' + (startId + i)
-        })
-    }
-    return rows
-}
+					button.on("click", item.callback);
+				}
+			});
+		}
+	};
+})(jQuery);
