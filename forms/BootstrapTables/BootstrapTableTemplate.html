@@ -107,6 +107,7 @@
             $table.bootstrapTable('destroy').bootstrapTable({
                 height: 600,
                 locale: 'vi-VN',
+                exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
                 formatLoadingMessage() {
                     return 'Đang tải'
                 },
@@ -116,9 +117,9 @@
                 formatShowingRows(pageFrom, pageTo, totalRows, totalNotFiltered) {
                     if (totalNotFiltered !== undefined && totalNotFiltered > 0 && totalNotFiltered >
                         totalRows) {
-                        return `Hiển thị từ trang ${pageFrom} đến ${pageTo} của ${totalRows} bảng ghi (filtered from ${totalNotFiltered} total rows)`
+                        return `Hiển thị từ trang ${pageFrom} đến ${pageTo} của ${totalRows} dòng dữ liệu (filtered from ${totalNotFiltered} total rows)`
                     }
-                    return `Hiển thị từ trang ${pageFrom} đến ${pageTo} của ${totalRows} bảng ghi`
+                    return `Hiển thị từ trang ${pageFrom} đến ${pageTo} của ${totalRows} dòng dữ liệu`
                 },
                 formatSRPaginationPreText() {
                     return 'Trang trước'
@@ -166,7 +167,7 @@
                     return 'Thể hiện trường dữ liệu'
                 },
                 formatColumnsToggleAll() {
-                    return 'Toggle all'
+                    return 'Chuyển đổi'
                 },
                 formatFullscreen() {
                     return 'Xem đầy đủ'
